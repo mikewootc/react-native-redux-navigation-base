@@ -10,12 +10,12 @@ import {
 import { navigation } from '../actions'
 
 import ScreenLogin from './ScreenLoginCtn';
-//import ScreenAddDevice from '../components/ScreenAddDevice';
+import ScreenVideoCall from './ScreenVideoCallCtn';
 
 
 export const AppNavigator = StackNavigator({
   Login: {screen: ScreenLoginCtn},
-//  VideoCall: {screen: ScreenVideoCall},
+  VideoCall: {screen: ScreenVideoCall},
 });
 
 // -----------------------------------------------------------------------------
@@ -40,7 +40,8 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  nav: state.nav
+  nav: state.nav,
+  userInfo: state.userInfo,
 });
 
 export default AppNavigatorCtn = connect(mapStateToProps)(App);

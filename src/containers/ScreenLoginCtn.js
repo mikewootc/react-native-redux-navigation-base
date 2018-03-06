@@ -1,18 +1,33 @@
-import { connect } from 'react-redux'
-import { NavigationActions } from "react-navigation";
-import ScreenLogin from '../components/ScreenLogin'
+import { connect }              from 'react-redux'
+import { NavigationActions }    from "react-navigation";
+import ScreenLogin              from '../components/ScreenLogin'
+import {
+    loginUserNameInput,
+    loginPasswordInput,
+    userLogin,
+}                               from '../actions'
+import {  }            from '../actions'
 
 function mapStateToProps (state, ownProps) {
-    return {}
+    return state.userInfo;
 }
 
-function mapDispatchToProps(dispatch, myProps) {
+function mapDispatchToProps(dispatch, ownProps) {
     return {
-        onClick: () => {
-            console.log('dispatch ACTION_NAVIGATE');
-//            dispatch(
-//                NavigationActions.navigate({ routeName: 'ScreenVideoCall' })
-//            );
+        onPressLogin: () => {
+            dispatch(userLogin('hello', 'passwd', dispatch));
+            //dispatch(
+            //    NavigationActions.navigate({ routeName: 'VideoCall' })
+            //);
+        },
+
+        onUserNameInput: (name) => {
+            dispatch(loginUserNameInput(name));
+        },
+
+        onPasswordInput: (password) => {
+            console.log('onPasswordInput');
+            dispatch(loginPasswordInput(password));
         }
     }
 }
